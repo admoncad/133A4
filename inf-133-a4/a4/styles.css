@@ -177,9 +177,8 @@ div {
 }
 
 
-.about {
-    background: url(images/clown_fish.png) left no-repeat, url(images/puffer_fish.png) right no-repeat;
-    background-size: 200px 150px, 200px, 150px;
+.recommendation {
+    background-color: #F0E7D8;
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -188,7 +187,7 @@ div {
     min-height: 50vh;
 }
 
-.about .side {
+.recommendation.side {
     flex: 1 1 100px;
 
 }
@@ -210,19 +209,18 @@ main {
     margin: 10px;
 }
 
-.project {
-    background: url(images/clown_fish.png) left no-repeat, url(images/puffer_fish.png) right no-repeat;
-    background-size: 200px 150px, 200px, 150px;
+.map {
+    background-color: #F0E7D8;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
     margin: 5%;
     gap: 15px;
     min-height: 50vh;
 }
 
-.project .side {
-
+.map .div {
+    position: relative;
     flex: 1 1 200px;
 }
 
@@ -242,6 +240,14 @@ footer {
     margin: 0;
 }
 
+#map { 
+    height: 500px; 
+    width: 1000px;
+    margin: 5%;
+    gap: 15px;
+    min-height: 50vh;
+    position: relative;
+}
 
 @media(max-width: 600px) {
     .hideOnMobile {
@@ -254,6 +260,10 @@ footer {
 
 @media(max-width: 800px) {
     .hero {
+        max-width: fit-content;
+    }
+
+    #map {
         max-width: fit-content;
     }
 }
