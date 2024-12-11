@@ -19,8 +19,11 @@
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
 
+     <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js">
+     </script>
+
+
 </head>
-<body>
     <header>
         <nav>
             <ul class="sidebar">
@@ -31,7 +34,7 @@
             </ul>
 
             <ul>
-                <li><a href="index.html"><h2>Hello!</h2></a></li>
+                <li><a href="index.html"><h2>AntsAntsAnts!</h2></a></li>
                 <li class="hideOnMobile"><a href="index.html"><h2>Home</h2></a></li>
                 <li class="hideOnMobile"><a href="recommendation.html"><h2>Recommendations</h2></a></li>
                 <li class="hideOnMobile"><a href="map.html"><h2>Map</h2></a></li>
@@ -50,15 +53,46 @@
             }
         </script>
     </header>
+<body>
     
     
 
     <section class="hero"> 
         <div class="hero-text">
-                <h1>Welcome</h1>
-                <h2>Spin the Wheel!</h2>
+
+            <!--<div class="modal" id="modal">
+                <div class = "modal-header"><p id="random-title"></div>
+                    <div class = "modal-body">
+                        Service Style:
+                    </div>
+                    <p id = "random-service"></p>
+    
+            </div>-->
+            <h2>Restaurant:</h2> <h3 id="random-title"></h3>
+            <h2>Hours:</h2> <h3 id = "random-hours"></h3>
+            <h2>Price:</h2> <h3 id = "random-price"></h3>
+
+                <button id="LoadRow">Randomize!</button>
+                <script>
+                    let btn = document.querySelector('#LoadRow');
+                    btn.addEventListener('click', () => {
+                        fetch('/restaurants.xlsx')
+                            .then(response => response.blob())
+                            .then(blob => readXlsxFile(blob))
+                            .then((rows) => {
+                                let x = Math.floor(Math.random() * 20) + 1;
+                                console.log(rows[x]);
+                                document.getElementById('random-title').innerHTML = rows[x][0];
+                                document.getElementById('random-hours').innerHTML = rows[x][4];
+                                document.getElementById('random-price').innerHTML = rows[x][7];
+                                modal.classList.add("open");
+                            });
+                    })
+                </script>
         </div>
 
+                <!--<h1>Welcome</h1>
+                <h2>Spin the Wheel!</h2>-->
         <div class="hero-img">
             <img src="images/blue_beta.png" alt="blue beta fish">
         </div>
