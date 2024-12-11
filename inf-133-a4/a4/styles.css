@@ -251,15 +251,6 @@ main p {
     flex: 1 1 200px;
 }
 
-.sheet .iframe {
-    height: 1000px; 
-    width: 1000px;
-    min-height: 50vh;
-    position: center;
-    border: none;
-
-}
-
 footer {
     margin: 0;
 }
@@ -271,6 +262,11 @@ footer {
     gap: 15px;
     min-height: 50vh;
     position: relative;
+}
+
+.dork{
+    height: calc(100vh - 95px) !important;
+    width: 100% !important;
 }
 
 @media(max-width: 600px) {
