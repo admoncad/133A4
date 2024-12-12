@@ -9,15 +9,19 @@
     <!-- Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@latest/fonts/remixicon.css" rel="stylesheet">
     
-     <!-- leaflet CSS file -->
+     <!-- Leaflet CSS file -->
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
  
-     <!--  Leaflet js file -->
+     <!-- Leaflet js file -->
      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
+
+    <!-- Restaurant Spreadsheet-->
+     <script src="https://unpkg.com/read-excel-file@5.x/bundle/read-excel-file.min.js">
+     </script>
 
 </head>
 <body>
@@ -31,7 +35,7 @@
             </ul>
 
             <ul>
-                <li><a href="index.html"><h2>Hello!</h2></a></li>
+                <li><a href="index.html"><h2>AntsAntsAnts!</h2></a></li>
                 <li class="hideOnMobile"><a href="index.html"><h2>Home</h2></a></li>
                 <li class="hideOnMobile"><a href="recommendation.html"><h2>Recommendations</h2></a></li>
                 <li class="hideOnMobile"><a href="map.html"><h2>Map</h2></a></li>
@@ -53,23 +57,49 @@
     
     
 
-    <section class="hero"> 
-        <div class="hero-text">
-                <h1>Welcome</h1>
-                <h2>Spin the Wheel!</h2>
+    <section class="main"> 
+        <div class="main-title">
+                <h1>AntsAntsAnts</h1>
+                <h2>Our solution for hungry anteaters!</h2>
+                <div class="main-img">
+                    <img src="images\honeypot.png" alt="honeypot ant">
+                </div>
         </div>
 
-        <div class="hero-img">
-            <img src="images/blue_beta.png" alt="blue beta fish">
+        <div class="randomizer-text">
+            <h2>Restaurant:</h2> <h3 id="random-title"></h3>
+            <h2>Hours:</h2> <h3 id = "random-hours"></h3>
+            <h2>Price:</h2> <h3 id = "random-price"></h3>
+
+            <button id="LoadRow">Randomize!</button>
+            <script>
+                let btn = document.querySelector('#LoadRow');
+                btn.addEventListener('click', () => {
+                    fetch("restaurantInfo\\restaurants.xlsx")
+                        .then(response => response.blob())
+                        .then(blob => readXlsxFile(blob))
+                        .then((rows) => {
+                            let x = Math.floor(Math.random() * 20) + 1;
+                            console.log(rows[x]);
+                            document.getElementById('random-title').innerHTML = rows[x][0];
+                            document.getElementById('random-hours').innerHTML = rows[x][4];
+                            document.getElementById('random-price').innerHTML = rows[x][7];
+                            modal.classList.add("open");
+                        });
+                })
+            </script>
         </div>
     </section>
 
     <div class="icons">
-        <a href="https://github.com/uci-inf-133/a1-personal-website-abrilrd.git"><i class="ri-github-line"></i></a>
-        <a href="www.linkedin.com/in/abril-rachel-delgado-38750b330"><i class="ri-linkedin-fill"></i></a>
-        <a href="https://inf133fall2024.slack.com/team/U07PQGMNACX"><i class="ri-slack-line"></i></a>
-        <a href=""><i class="ri-discord-line"></i></a>
+        <a href="https://github.com/admoncad/133A4"><i class="ri-github-line"></i></a>
+        <a href="https://youtu.be/Q3K0TOvTOno?si=uIWd811O0H0ibFh0"><i class="ri-linkedin-fill"></i></a>
+        <a href="https://youtu.be/Euq7uTeYCP0?si=f_3szfVP46jbKcD1"><i class="ri-slack-line"></i></a>
+        <a href="https://www.youtube.com/watch?v=nvrqfI2OyrU"><i class="ri-discord-line"></i></a>
     </div>
+
+    <audio src= "audio\24. Mii Maker - Mii Editor.mp3" loop autoplay>
+    </audio>
 
 </body>
 </html>
