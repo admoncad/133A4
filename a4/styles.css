@@ -136,21 +136,21 @@ nav li:first-child {
     margin-bottom: 10px;
 }
 
-.randomizer .button {
-    color: white;
+#LoadRow {
     text-decoration: none;
-    font-size: 14pt;
+    color: white;
+    font-size: 12pt;
     align-items: center;
     background-color: #52000B;
     backdrop-filter: blur(10px);
     border-radius: 5pt;
     border: 1px solid transparent;
-    padding: 2px 4px;
+    padding: 4px 4px;
 }
 
-.randomizer .button:hover {
+#LoadRow:hover {
     border: 1pt solid white;
-    transform: translateX(8px);
+    transform: translateZ(4px);
 }
 
 
